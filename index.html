@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quà Tặng 20/11 từ Học Trò cũ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart-bg .floating-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #d66;
+            transform: rotate(-45deg);
+            animation: float 5s infinite;
+            opacity: 0.6;
+        }
+
+        .heart-bg .floating-heart::before,
+        .heart-bg .floating-heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #d66;
+            border-radius: 50%;
+        }
+
+        .heart-bg .floating-heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart-bg .floating-heart::after {
+            top: 0;
+            left: 10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) rotate(-45deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 0.6;
+            }
+        }
+
+        .envelope {
+            width: 400px;
+            height: 240px;
+            background-color: #fff;
+            position: relative;
+            border: 2px solid #000;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            z-index: 1;
+        }
+
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #e0e0e0;
+            clip-path: polygon(0 0, 100% 0, 50% 60%);
+            top: 0;
+            border-top: 2px solid #000;
+            transform-origin: top;
+            transition: transform 0.8s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #d66;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            cursor: pointer;
+            z-index: 2;
+            transition: opacity 0.5s ease;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #d66;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 20px;
+            top: 0;
+        }
+
+        .letter {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            background-color: #fff;
+            width: 90%;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #d66;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+            z-index: 1;
+            color: #333;
+            overflow-y: auto;
+        }
+
+        .lipstick-mark {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-image: url('5d99074f-9242-4451-a73e-ece0983c703b.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: fadeInOut 2s ease forwards;
+            z-index: 3;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .open .flap {
+            transform: rotateX(-180deg);
+        }
+
+        .open .letter {
+            opacity: 1;
+            transform: translate(-50%, -100%);
+        }
+
+        .open .heart {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-bg"></div>
+
+    <div class="envelope">
+        <div class="flap"></div>
+        <div class="heart"></div>
+        <div class="letter"></div>
+    </div>
+
+    <div class="lipstick-mark"></div>
+    
+    <script>
+        const envelope = document.querySelector('.envelope');
+        const heart = document.querySelector('.heart');
+        const letter = document.querySelector('.letter');
+        const heartBg = document.querySelector('.heart-bg');
+        const lipstickMark = document.querySelector('.lipstick-mark');
+
+        // Nội dung của bức thư
+        const letterContent = "Nhân ngày 20/11 Em xin chúc Thầy Phạm Viết Thắng 1 năm giảng dạy thật thành công gặt hái được nhiều kết quả, có được nhiều giải thưởng và ngày càng tâm huyết trên con đường nhà giáo nhiều chông gai❤️❤️❤️ , em xin chúc Thầy Tất Cả  ";
+
+        // Thêm các trái tim vào nền
+        for (let i = 0; i < 20; i++) {
+            const floatingHeart = document.createElement('div');
+            floatingHeart.classList.add('floating-heart');
+            floatingHeart.style.left = `${Math.random() * 100}%`;
+            floatingHeart.style.top = `${Math.random() * 100}%`;
+            floatingHeart.style.animationDelay = `${Math.random() * 5}s`;
+            heartBg.appendChild(floatingHeart);
+        }
+
+        // Hiệu ứng chạy chữ từ từ
+        function typeLetter(content, element, delay = 100) {
+            element.style.display = 'block';
+            element.innerHTML = "";
+            let index = 0;
+
+            function type() {
+                if (index < content.length) {
+                    element.innerHTML += content.charAt(index);
+                    index++;
+                    setTimeout(type, delay);
+                }
+            }
+            type();
+        }
+
+        // Xử lý sự kiện click vào trái tim để mở phong bì và "rút" lá thư ra
+        heart.addEventListener('click', () => {
+            envelope.classList.toggle('open');
+            typeLetter(letterContent, letter, 100); // Chữ sẽ hiện ra mỗi 100ms
+            lipstickMark.style.opacity = '1'; // Hiện dấu môi khi mở lá thư
+            lipstickMark.style.animation = 'fadeInOut 2s ease forwards'; // Chạy animation cho dấu môi
+        });
+    </script>
+</body>
+</html>
